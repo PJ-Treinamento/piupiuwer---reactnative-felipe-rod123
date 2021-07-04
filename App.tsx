@@ -1,21 +1,21 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+
+import {Nunito_400Regular, Nunito_600SemiBold, Nunito_700Bold, useFonts} from '@expo-google-fonts/nunito';
+import {Poppins_400Regular, Poppins_600SemiBold, Poppins_700Bold} from '@expo-google-fonts/poppins';
+
+import Login from './src/pages/Login';
 
 export default function App() {
+  useFonts({
+    Nunito_400Regular, Nunito_600SemiBold, Nunito_700Bold,
+    Poppins_400Regular, Poppins_600SemiBold, Poppins_700Bold
+  });
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+      <Login />
+      <StatusBar style="auto"/>
+    </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
