@@ -1,11 +1,13 @@
-import { StatusBar } from 'expo-status-bar';
+import 'react-native-gesture-handler';
 import React from 'react';
+
+import { NavigationContainer } from '@react-navigation/native';
 
 import {Nunito_400Regular, Nunito_600SemiBold, Nunito_700Bold, useFonts} from '@expo-google-fonts/nunito';
 import {Poppins_400Regular, Poppins_600SemiBold, Poppins_700Bold} from '@expo-google-fonts/poppins';
 
-import Login from './src/pages/Login';
-import Feed from './src/pages/Feed';
+import Routes from './src/hooks';
+import { AuthProvider } from './src/hooks/auth';
 
 export default function App() {
   useFonts({
@@ -14,39 +16,10 @@ export default function App() {
   });
 
   return (
-    <>
-      <Feed />
-      <StatusBar style="auto"/>
-    </>
+    <NavigationContainer>
+      <AuthProvider>
+        <Routes />
+      </AuthProvider> 
+    </NavigationContainer>   
   );
 }
-
-/*
-import React from 'react';
-import { NativeRouter } from "react-router-native";
-import { StatusBar } from 'expo-status-bar';
-
-import Routes from '../mobile/src/routes';
-import { AuthProvider } from '../mobile/src/hooks/auth';
-
-import {Nunito_400Regular, Nunito_600SemiBold, Nunito_700Bold, useFonts} from '@expo-google-fonts/nunito';
-import {Poppins_400Regular, Poppins_600SemiBold, Poppins_700Bold} from '@expo-google-fonts/poppins';
-
-const App: React.FC = () =>{
-  useFonts({
-    Nunito_400Regular, Nunito_600SemiBold, Nunito_700Bold,
-    Poppins_400Regular, Poppins_600SemiBold, Poppins_700Bold
-  });
-  
-  return (
-    <AuthProvider>
-      <NativeRouter>
-        <StatusBar style="auto"/>
-        <Routes/>
-      </NativeRouter>
-    </AuthProvider>
-  );
-}
-
-export default App;
-*/

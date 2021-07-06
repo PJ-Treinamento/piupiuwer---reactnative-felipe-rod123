@@ -1,13 +1,24 @@
+// import React from "react";
+
+// import { AuthProvider } from "./auth";
+
+// const AppProvider: React.FC = ({children}) => {
+//    return(
+//       <AuthProvider>
+//          {children}
+//       </AuthProvider>
+//    );
+// }
+
+// export default AppProvider;
+
 import React from "react";
 
-import { AuthProvider } from "./auth";
+import AuthRoutes from "../routes/auth.routes";
+import AppRoutes from "../routes/app.routes";
 
-const AppProvider: React.FC = ({children}) => {
-   return(
-      <AuthProvider>
-         {children}
-      </AuthProvider>
-   );
+const Routes: React.FC = () => {
+   return <AuthRoutes/>;
 }
 
-export default AppProvider;
+export default Routes;

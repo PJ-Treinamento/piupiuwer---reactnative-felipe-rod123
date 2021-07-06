@@ -2,6 +2,9 @@ import { createContext, useContext, useState } from "react";
 import { UserProps } from "../components/User";
 import api from "../services/api";
 
+import AsyncStorage  from '@react-native-community/async-storage';
+//yarn add @react-native-community/async-storage
+
 interface LoginCredentials{
   email: string,
   password: string,
@@ -24,8 +27,8 @@ const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 export const AuthProvider: React.FC = ({ children }) => {
 
 	const [userData, setUserData] = useState<AuthState>(() => {
-        const token = localStorage.getItem('@Project:token');
-        const user = localStorage.getItem('@Project:user');
+        const token = AsyncStorage.getItem('@Project:token');
+        const user = AsyncStorage.getItem('@Project:user');
 
         if (user && token) {
             return { token, user: JSON.parse(user) };
@@ -43,15 +46,15 @@ export const AuthProvider: React.FC = ({ children }) => {
       const { token, user } = response.data;
       setUserData({token, user});
 
-      localStorage.setItem('@Project:token', token);
-      localStorage.setItem('@Project:user', JSON.stringify(user));
+      AsyncStorage.setItem('@Project:token', token);
+      AsyncStorage.setItem('@Project:user', JSON.stringify(user));
 
       setUserData({ token, user });
   };
 
   const logout = () => {
-    localStorage.removeItem('@Project:user');
-    localStorage.removeItem('@Project:token');
+    AsyncStorage.removeItem('@Project:user');
+    AsyncStorage.removeItem('@Project:token');
  
    setUserData({} as AuthState);
  }

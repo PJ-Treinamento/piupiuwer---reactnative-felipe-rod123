@@ -6,6 +6,13 @@ import styles from "./styles";
 import logoImg from '../../assets/icons/logo.png';
 import optionsImg from '../../assets/icons/options.png';
 import searchImg from '../../assets/icons/search.png';
+import avatarImg from '../../assets/icons/avatar.png';
+import likeImg from '../../assets/icons/like.png';
+import likedImg from '../../assets/icons/liked.png';
+import favoriteImg from '../../assets/icons/favorite.png';
+import favoriteFullImg from '../../assets/icons/favoriteFull.png';
+
+
 
 export default function Feed(){
    const [search, setSearch] = useState('');
@@ -53,7 +60,28 @@ export default function Feed(){
             </TouchableOpacity>
          </View>
          
+         <View style={styles.postContainer}>
+            <TouchableOpacity style={styles.userProfile}>
+               <Image source={avatarImg} style={styles.photo}/>
+               <Text style={styles.username}>user_name</Text>
+               <Text style={styles.name}>Nome</Text>
+            </TouchableOpacity>
 
+            <Text style={styles.message}>
+               Esta é uma mensagem teste!
+            </Text>
+
+            <View  style={styles.postFooter}>
+               <TouchableOpacity style={styles.likeButton}>
+                  <Image source={likeImg}/>
+                  <Text>0 pessoas curtiram isso</Text>
+               </TouchableOpacity>
+               <TouchableOpacity style={styles.favoriteButton}>
+                  <Image source={favoriteImg}/>
+               </TouchableOpacity>
+            </View>
+            
+         </View>
 
          {/* <ScrollView>
             {

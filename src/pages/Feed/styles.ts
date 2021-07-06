@@ -50,6 +50,33 @@ const styles = StyleSheet.create({
       resizeMode: 'contain',
       alignSelf: 'center',
    },
+   userProfile:{
+      
+   },
+   postContainer:{
+      
+   },
+   photo:{
+      
+   },
+   username:{
+      
+   },
+   name:{
+      
+   },
+   message:{
+      
+   },
+   postFooter:{
+      
+   },
+   likeButton:{
+      
+   },
+   favoriteButton:{
+      
+   },
 
 });
 

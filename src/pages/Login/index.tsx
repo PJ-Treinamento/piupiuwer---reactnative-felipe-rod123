@@ -5,12 +5,10 @@ import { View, Image, TextInput, Text, TouchableOpacity } from "react-native";
 //Eu tentei usar Styled Components, mas ficavam aparecendo vários erros e não dava muito tempo para consertar, por isso eu usei o método com styles...
 import styles from "./styles";
 
-import { Link } from "react-router-native";
-import { useAuth } from "../../hooks/auth";
-import api from "../../services/api";
-
 import logoImg from '../../assets/icons/logo.png';
 import nextImg from '../../assets/icons/next.png';
+
+import { useAuth } from "../../hooks/auth";
 
 export default function Login(){
    const [email, setEmail] = useState('');
@@ -18,7 +16,7 @@ export default function Login(){
 
    const {login} = useAuth();
 
-   const signIn = () =>{
+   const handleSignIn = () => {
       login({email, password});
    }
    
@@ -37,12 +35,12 @@ export default function Login(){
             placeholder="Digite sua senha"
             onChange={event => setPassword(event.target.toString())}
          />
-         <Link to="/" 
+         <TouchableOpacity
             style={styles.buttonContainer} 
-            onPress={()=>{signIn}}
+            onPress={()=>{handleSignIn}}
          >
             <Image source={nextImg} style={styles.nextButton}/>
-         </Link>
+         </TouchableOpacity>
          <Text style={styles.forgotPassword}>Esqueci minha senha</Text>
         
       </View>
